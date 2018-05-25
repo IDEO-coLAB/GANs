@@ -164,8 +164,9 @@ class Model:
             print('trying to restore session from %s' % self.checkpoints_path)
             self.saver.restore(self.sess, self.checkpoints_path)
             print('restored session')
-        except:
+        except Exception as e:
             print('failed to restore session, creating a new one')
+            print(e)
             tf.global_variables_initializer().run()
 
     # log some basic data for tensorboard
