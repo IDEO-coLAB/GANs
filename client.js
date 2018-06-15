@@ -4,8 +4,6 @@ const py = PyFiClient()
 
 let imgSize = {}
 
-let canvas = document.createElement('canvas')
-let ctx = canvas.getContext('2d')
 
 const button = document.getElementById('button')
 const result = document.getElementById('result')
@@ -20,9 +18,6 @@ py._.onReady(()=>{
   .then(size => {
     console.log(size)
     imgSize = size
-
-    canvas.width = imgSize.width
-    canvas.height = imgSize.height
   })
 })
 
@@ -32,7 +27,7 @@ button.addEventListener("click", function(){
   py.generate_image([])
   .then(res => {
     console.log(res)
-    renderimage(res)
+    loadImage(res)
     result.innerHTML = `logged console`
     button.disabled = false
   })
@@ -41,6 +36,8 @@ button.addEventListener("click", function(){
   })
 })
 
-const renderimage = function(image_message){
-  ctx.putImageData(image_message, 0, 0)
+const loadImage = function(file_name){
+  let elem = document.createElement('img')
+  elem.setAttribute('src', `imgs/${file_name}`)
+  document.getElementById('imageFrame').appendChild(elem)
 }
