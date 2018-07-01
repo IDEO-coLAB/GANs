@@ -28,7 +28,7 @@ button.addEventListener("click", function(){
   .then(res => {
     console.log(res)
     loadImage(res)
-    result.innerHTML = `logged console`
+    result.innerHTML = `success!`
     button.disabled = false
   })
   .catch(error => {
