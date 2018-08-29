@@ -20,6 +20,7 @@ py._.attachClientSocketIO(io);
 
 
 py._.onReady(() => {
+  console.log('inside onReady')
   server.listen(3000, () => {
     console.log('listening on port 3000!');
   });
