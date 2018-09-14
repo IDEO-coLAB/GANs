@@ -11,7 +11,7 @@ app.use(express.static('public'));
 const py = PyFi({
     path: './python', // equivalent to setting PYTHONPATH
     imports: [{
-      import: ['generate_image', 'get_size'],
+      import: ['generate_random_chair', 'get_size', 'generate_similar_chairs'],
       from: 'example',
     }],
   });
