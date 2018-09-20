@@ -1,13 +1,17 @@
 <html>
   <head>
-    <title>PyFi Client!</title>
+    <title>GAN Chairs</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="base.css"/>
     <style>
       body{
         font-family: sans-serif;
       }
       .wrapper{
-        width: 600px;
+        width: 60%;
         margin: 40px auto;
       }
       input{
@@ -23,26 +27,47 @@
     </style>
   </head>
   <body>
-    <div class="wrapper">
-      <h2>Welcome to Chair Explore</h2>
-      <div id="imageFrame">
 
+    <div class="wrapper">
+      <div class="row">
+        <h1>Welcome to the GAN Chair explorer</h1>
       </div>
-      <button id="button">Create Chair</button>
+      <div class="row">
+        <h3 class="ten columns">GAN chairs is an exploration in augmenting a human’s capacity for creativity through machine learning. The prototype is built using a Generative Adversarial Neural-network. (or GAN for short)  This type of machine learning is unique in that the computer works against itself in an attempt to create more and more convincing renderings of images. It directs its learning and thus the images it creates by comparing them to roughly 2500 images of real chairs we provided as example data. This serves as the “truth” and guides the machine learning. <br /><br />Here you may explore the machine’s capacity for creation by creating what we call a seed chair. This is a random chair never before seen and totally unique. Once you find one that you think is interesting you may then tell the GAN to iterate on that seed chair. This will have the GAN randomize some parameters of the chair and allow to explore options around the aesthetics of that seed chair. <br /><br />Please allow approximately 10 seconds for the seed chair to render </h3>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="row">
+        <h2 class="nine columns">Seed chair</h2>
+        <button class="three columns" id="button">Create new seed chair</button>
+      </div>
+      <br>
+      <div class="row">
+        <div id="imageFrame">
+
+        </div>
+      </div>
       <br>
       <div id="result"></div>
-      <script src="/client-built.js"></script>
     </div>
 
     <div class="wrapper">
-      <h2>Generate chair with familiy</h2>
-      <div id="familyFrame">
 
+      <div class="row">
+        <h2 class="nine columns">Iterations of seed chair</h2>
+        <button class="three columns" id="button_family">Create Chair Iterations</button>
       </div>
-      <button id="button_family">Create Chair Family</button>
+      <br>
+      <div class="row">
+        <div id="familyFrame">
+
+        </div>
+      </div>
       <br>
       <div id="familyResult"></div>
-      <script src="/client-built.js"></script>
     </div>
+    <script src="/client-built.js"></script>
+
   </body>
 </html>

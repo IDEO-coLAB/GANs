@@ -20,6 +20,36 @@ const loadImage = function(file_name, index){
   document.getElementById('imageFrame').appendChild(elem)
 }
 
+const loadFamily = function(file_name, index){
+  let elem = document.createElement('img')
+  // document.getElementById('imageFrame').removeChild('img')
+  elem.setAttribute('src', `imgs/${file_name}`)
+  elem.setAttribute('familyImg', 'null')
+  elem.setAttribute('data-vector-index', index)
+  document.getElementById('familyFrame').appendChild(elem)
+}
+
+function removeImages() {
+  var images = [].slice.call(document.getElementsByTagName('img'), 0)
+  images.forEach(function(img) { // iterate the images array
+    img.parentNode.removeChild(img) // remove the child node via the parent node
+  });
+}
+
+function removeFamily() {
+
+  if (document.querySelectorAll('familyImg') == null) {
+    return "null";
+  } else {
+    var images = [].slice.call(document.querySelectorAll('familyImg'), 0)
+    console.log(images)
+    images.forEach(function(img) { // iterate the images array
+      img.parentNode.removeChild(img) // remove the child node via the parent node
+    })
+    return "Removed";
+  }
+}
+
 py._.onReady(()=>{
   // wait until PyFi is ready to allow clicks
   button.disabled = false
@@ -34,18 +64,16 @@ py._.onReady(()=>{
 
 button.addEventListener("click", function(event){
   console.log('clicked initial generator!')
-
   event.preventDefault()
   event.stopPropagation()
 
   button.disabled = true
-
+  removeImages()
   py.generate_random_chair([])
   .then(res => {
     baseChair = res
     loadImage(baseChair.file_name)
     console.log('baseChair Set:',res)
-    result.innerHTML = `success!`
     button.disabled = false
   })
   .catch(error => {
@@ -71,11 +99,12 @@ button_family.addEventListener("click", function(event){
     py.generate_similar_chairs([baseChair.latent_vector])
       .then(derivations => {
         derivedChairs = derivations
+        removeFamily()
+
         console.log('derivedChairs Set:',derivedChairs)
         derivedChairs.file_names.forEach(function(file_name, index) {
-          loadImage(file_name, index)
+          loadFamily(file_name, index)
         })
-        familyResult.innerHTML = `success!`
         button_family.disabled = false
       })
   // })
